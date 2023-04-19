@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manik Calculator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -26,6 +27,51 @@
             </form>
         </div>
         {% endif %}
+        <div>
+            <form method="POST" action="/add">
+                <input type="text" name="num1">
+                <input type="text" name="num2">
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+        <div>
+            <form method="POST" action="/subtract">
+                <input type="text" name="num1">
+                <input type="text" name="num2">
+                <input type="submit" value="Subtract">
+            </form>
+        </div>
+
+        <div>
+            <form method="POST" action="/multiply">
+                <input type="text" name="num1">
+                <input type="text" name="num2">
+                <input type="submit" value="Multiply">
+            </form>
+        </div>
+
+        <div>
+            <form method="POST" action="/divide">
+                <input type="text" name="num1">
+                <input type="text" name="num2">
+                <input type="submit" value="Divide">
+            </form>
+        </div>
+
+        <div id="result"></div>
+
+        <script>
+            $(document).ready(function() {
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    $.post($(this).attr('action'), $(this).serialize(), function(data) {
+                        $('#result').html(data);
+                    });
+                });
+            });
+        </script>
+
     </div>
 </body>
 </html>

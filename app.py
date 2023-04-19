@@ -6,26 +6,48 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/calculate', methods=['POST'])
-def calculate():
+@app.route('/add', methods=['POST'])
+def add():
     try:
         num1 = float(request.form['num1'])
         num2 = float(request.form['num2'])
-        operator = request.form['operator']
+        result = num1 + num2
+        return str(result)
 
-        if operator == 'add':
-            result = num1 + num2
-        elif operator == 'subtract':
-            result = num1 - num2
-        elif operator == 'multiply':
-            result = num1 * num2
-        elif operator == 'divide':
-            if num2 == 0:
-                return "Error: Cannot divide by zero"
-            result = num1 / num2
-        else:
-            return "Error: Invalid operator"
-        
+    except ValueError:
+        return "Error: Invalid input"
+
+@app.route('/subtract', methods=['POST'])
+def subtract():
+    try:
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+        result = num1 - num2
+        return str(result)
+
+    except ValueError:
+        return "Error: Invalid input"
+
+@app.route('/multiply', methods=['POST'])
+def multiply():
+    try:
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+        result = num1 * num2
+        return str(result)
+
+    except ValueError:
+        return "Error: Invalid input"
+
+@app.route('/divide', methods=['POST'])
+def divide():
+    try:
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+
+        if num2 == 0:
+            return "Error: Cannot divide by zero"
+        result = num1 / num2
         return str(result)
 
     except ValueError:
