@@ -25,20 +25,21 @@
             <div class="form-group row">
                 <label for="operation" class="col-sm-2 col-form-label">Operation:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="operation" name="operation">
-                        <option value="add">Addition (+)</option>
-                        <option value="subtract">Subtraction (-)</option>
-                        <option value="multiply">Multiplication (*)</option>
-                        <option value="divide">Division (/)</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10 offset-sm-2">
-                    <button type="submit" class="btn btn-primary">Calculate</button>
+                    <input type="hidden" id="operation" name="operation">
+                    <button type="button" class="btn btn-primary" onclick="setOperationAndSubmit('add')">Addition (+)</button>
+                    <button type="button" class="btn btn-primary" onclick="setOperationAndSubmit('subtract')">Subtraction (-)</button>
+                    <button type="button" class="btn btn-primary" onclick="setOperationAndSubmit('multiply')">Multiplication (*)</button>
+                    <button type="button" class="btn btn-primary" onclick="setOperationAndSubmit('divide')">Division (/)</button>
                 </div>
             </div>
         </form>
     </div>
+
+    <script>
+        function setOperationAndSubmit(operation) {
+            document.getElementById('operation').value = operation;
+            document.querySelector('form').submit();
+        }
+    </script>
 </body>
 </html>
