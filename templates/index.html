@@ -37,8 +37,10 @@
 
     <script>
         function setOperationAndSubmit(operation) {
+            const form = document.querySelector('form');
+            form.method = 'POST';
             document.getElementById('operation').value = operation;
-            document.querySelector('form').submit();
+            form.submit();
         }
     </script>
 </body>
