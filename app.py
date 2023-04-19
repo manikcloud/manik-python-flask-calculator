@@ -17,8 +17,12 @@ def error():
 @app.route('/calculate', methods=['POST'])
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    num1 = float(request.form['num1'])
-    num2 = float(request.form['num2'])
+    try:
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+    except ValueError:
+        return redirect(url_for('error'))
+
     operation = request.form['operation']
 
     if operation == 'add':
