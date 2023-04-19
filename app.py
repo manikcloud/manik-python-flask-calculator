@@ -1,34 +1,39 @@
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        num1 = float(request.form['num1'])
-        num2 = float(request.form['num2'])
-        operator = request.form['operator']
-
-        if operator == 'add':
-            result = num1 + num2
-        elif operator == 'subtract':
-            result = num1 - num2
-        elif operator == 'multiply':
-            result = num1 * num2
-        elif operator == 'divide':
-            if num2 == 0:
-                return "Error: Cannot divide by zero"
-            result = num1 / num2
-        else:
-            return "Error: Invalid operator"
-
-        return redirect(url_for('result', result=result))
-
     return render_template('index.html')
 
-@app.route('/result/<float:result>')
-def result(result):
-    return render_template('result.html', result=result)
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
+@app.route('/error')
+def error():
+    return render_template('error.html')
+
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    num1 = float(request.form['num1'])
+    num2 = float(request.form['num2'])
+    operation = request.form['operation']
+
+    if operation == 'add':
+        result = num1 + num2
+    elif operation == 'subtract':
+        result = num1 - num2
+    elif operation == 'multiply':
+        result = num1 * num2
+    elif operation == 'divide':
+        if num2 == 0:
+            return redirect(url_for('error'))
+        result = num1 / num2
+    else:
+        return redirect(url_for('error'))
+
+    return redirect(url_for('result', result=result))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)

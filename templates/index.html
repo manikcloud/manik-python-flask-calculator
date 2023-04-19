@@ -4,74 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manik Calculator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Manik Calculator</h1>
-        <form action="/" method="post">
-            <input type="number" name="num1" placeholder="Enter first number" required>
-            <input type="number" name="num2" placeholder="Enter second number" required>
-            <br>
-            <button type="submit" name="operation" value="add">+</button>
-            <button type="submit" name="operation" value="subtract">-</button>
-            <button type="submit" name="operation" value="multiply">*</button>
-            <button type="submit" name="operation" value="divide">/</button>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Manik Calculator</h1>
+        <form action="/calculate" method="POST">
+            <div class="form-group row">
+                <label for="num1" class="col-sm-2 col-form-label">Number 1:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="num1" name="num1" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="num2" class="col-sm-2 col-form-label">Number 2:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="num2" name="num2" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="operation" class="col-sm-2 col-form-label">Operation:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="operation" name="operation">
+                        <option value="add">Addition (+)</option>
+                        <option value="subtract">Subtraction (-)</option>
+                        <option value="multiply">Multiplication (*)</option>
+                        <option value="divide">Division (/)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+            </div>
         </form>
-        {% if result != None %}
-        <div class="result">
-            <h2>Result: {{ result }}</h2>
-            <form action="/" method="get">
-                <button type="submit">Calculate Again</button>
-            </form>
-        </div>
-        {% endif %}
-        <div>
-            <form method="POST" action="/add">
-                <input type="text" name="num1">
-                <input type="text" name="num2">
-                <input type="submit" value="Add">
-            </form>
-        </div>
-
-        <div>
-            <form method="POST" action="/subtract">
-                <input type="text" name="num1">
-                <input type="text" name="num2">
-                <input type="submit" value="Subtract">
-            </form>
-        </div>
-
-        <div>
-            <form method="POST" action="/multiply">
-                <input type="text" name="num1">
-                <input type="text" name="num2">
-                <input type="submit" value="Multiply">
-            </form>
-        </div>
-
-        <div>
-            <form method="POST" action="/divide">
-                <input type="text" name="num1">
-                <input type="text" name="num2">
-                <input type="submit" value="Divide">
-            </form>
-        </div>
-
-        <div id="result"></div>
-
-        <script>
-            $(document).ready(function() {
-                $('form').submit(function(e) {
-                    e.preventDefault();
-                    $.post($(this).attr('action'), $(this).serialize(), function(data) {
-                        $('#result').html(data);
-                    });
-                });
-            });
-        </script>
-
     </div>
 </body>
 </html>
