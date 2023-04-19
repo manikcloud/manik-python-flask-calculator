@@ -23,20 +23,21 @@ Manik Python Flask Calculator is a simple web application that allows users to p
 git clone https://github.com/yourusername/manik-python-flask-calculator.git
 
 ```
-Navigate to the project directory:
+* Navigate to the project directory:
 
 
 ```
 cd manik-python-flask-calculator
 ```
 Build the Docker image & Run the Docker container::
-
+```
 docker build -t manik-flask-calculator .
 
+docker run -d -p 5000:5000 --name manik-flask-calculator-container 
+manik-flask-calculator
 
-docker run -d -p 5000:5000 --name manik-flask-calculator-container manik-flask-calculator
 ```
-Access the application in your browser at http://localhost:5000 (replace localhost with the appropriate IP address if you're running the Docker container on a remote server).
+* Access the application in your browser at http://localhost:5000 (replace localhost with the appropriate IP address if you're running the Docker container on a remote server).
 
 
 # More info manik-python-flask-calculator
