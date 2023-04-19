@@ -114,11 +114,15 @@ Update your app.py file:
 
 Change the line:
 
-```app.run(host='0.0.0.0', port=5000)
+```
+app.run(host='0.0.0.0', port=5000)
+
 ```
 to:
 
-```app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+```
+app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
 ```
 
 Also, add the following import statement at the beginning of the app.py file:
@@ -140,10 +144,4 @@ docker run -d -p :5000:5000 --name your-container-name your-image-name
 * Replace your-public-ip with your public IP address, your-container-name with a name of your choice for the Docker container, and your-image-name with the name you used when building the Docker image.
 
 * Now, your Flask application should be running in a Docker container, and you can access it using your public IP address and the specified port (e.g., http://your-public-ip:5000).
-
-
-
-
-
-Regenerate response
 
