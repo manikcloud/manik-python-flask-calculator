@@ -1,4 +1,45 @@
-# manik-python-flask-calculator
+# Manik Python Flask Calculator
+
+Manik Python Flask Calculator is a simple web application that allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division. The application is built using Python and Flask, and it can be easily deployed using Docker.
+
+## Features
+
+- Perform addition, subtraction, multiplication, and division operations
+- Responsive web interface using Bootstrap
+- Error handling for invalid inputs
+- Docker support for easy deployment
+
+## Installation
+
+### Prerequisites
+
+- Docker installed on your system
+
+### Steps
+
+1. Clone the repository:
+
+```
+git clone https://github.com/yourusername/manik-python-flask-calculator.git
+
+```
+Navigate to the project directory:
+
+
+```
+cd manik-python-flask-calculator
+```
+Build the Docker image & Run the Docker container::
+
+docker build -t manik-flask-calculator .
+
+
+docker run -d -p 5000:5000 --name manik-flask-calculator-container manik-flask-calculator
+```
+Access the application in your browser at http://localhost:5000 (replace localhost with the appropriate IP address if you're running the Docker container on a remote server).
+
+
+# More info manik-python-flask-calculator
 
 
 To create a virtual environment for your Flask application, follow these steps:
@@ -76,7 +117,8 @@ CMD ["python", "app.py"]
 ```
 
 Create a requirements.txt file in the root directory of your Flask application, and add the following content:
-```Flask==2.1.1
+```
+Flask==2.1.1
 
 ```
 * Make sure to replace the version number with the version of Flask you are using in your application.
