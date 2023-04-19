@@ -13,7 +13,6 @@ def add():
         num2 = float(request.form['num2'])
         result = num1 + num2
         return str(result)
-
     except ValueError:
         return "Error: Invalid input"
 
@@ -24,7 +23,6 @@ def subtract():
         num2 = float(request.form['num2'])
         result = num1 - num2
         return str(result)
-
     except ValueError:
         return "Error: Invalid input"
 
@@ -35,7 +33,6 @@ def multiply():
         num2 = float(request.form['num2'])
         result = num1 * num2
         return str(result)
-
     except ValueError:
         return "Error: Invalid input"
 
@@ -44,12 +41,10 @@ def divide():
     try:
         num1 = float(request.form['num1'])
         num2 = float(request.form['num2'])
-
         if num2 == 0:
             return "Error: Cannot divide by zero"
         result = num1 / num2
         return str(result)
-
     except ValueError:
         return "Error: Invalid input"
 
