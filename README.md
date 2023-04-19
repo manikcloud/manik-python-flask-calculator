@@ -97,15 +97,17 @@ docker build -t manik-flask-calculator .
 ```
 
 docker run -d -p 5000:5000 --name your-container-name your-image-name
+
 ```
 
 * Replace your-container-name with a name of your choice for the Docker container, and your-image-name with the name you used in the previous step.
 
 * Your Flask application should now be running in a Docker container, and you can access it at http://localhost:5000.
+
 Note: If you're using Docker Toolbox on Windows, you'll need to use the IP address of the Docker Toolbox VM instead of localhost. You can find this IP address by running docker-machine ip in the Docker Toolbox terminal.
 
 
-# Docker on Publick IP 
+# Docker on Public IP 
 
 
 If you want to access your Flask application using a public IP instead of localhost, you need to make a small change to your app.py file and update the Docker run command.
@@ -127,7 +129,11 @@ app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 
 Also, add the following import statement at the beginning of the app.py file:
 
-```import os```
+```
+
+import os
+
+```
 * This change will allow you to set the port number from an environment variable when running the Docker container.
 
 * Build the Docker image as described in the previous response.
