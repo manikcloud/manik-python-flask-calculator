@@ -84,7 +84,11 @@ Create a requirements.txt file in the root directory of your Flask application, 
 Now, navigate to the root directory of your Flask application in the terminal or command prompt, and build the Docker image using the following command:
 
 ```
-docker build -t your-image-name .```
+docker build -t your-image-name .
+
+docker build -t manik-flask-calculator .
+
+```
 
 * Replace your-image-name with a name of your choice for the Docker image.
 
@@ -129,7 +133,7 @@ Also, add the following import statement at the beginning of the app.py file:
 
 ```
 
-docker run -d -p your-public-ip:5000:5000 --name your-container-name your-image-name
+docker run -d -p :5000:5000 --name your-container-name your-image-name
 
 ```
 
