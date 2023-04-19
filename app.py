@@ -15,6 +15,7 @@ def error():
     return render_template('error.html')
 
 @app.route('/calculate', methods=['POST'])
+@app.route('/calculate', methods=['POST'])
 def calculate():
     num1 = float(request.form['num1'])
     num2 = float(request.form['num2'])
@@ -33,7 +34,7 @@ def calculate():
     else:
         return redirect(url_for('error'))
 
-    return redirect(url_for('result', result=result))
+    return render_template('result.html', result=result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
