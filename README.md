@@ -8,6 +8,9 @@ Manik Python Flask Calculator is a simple web application that allows users to p
 - Responsive web interface using Bootstrap
 - Error handling for invalid inputs
 - Docker support for easy deployment
+- Kenkins Job 
+- Docker hub 
+- Somoke Test 
 
 ## Installation
 
