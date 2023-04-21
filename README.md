@@ -194,3 +194,57 @@ docker run -d -p :5000:5000 --name your-container-name your-image-name
 
 * Now, your Flask application should be running in a Docker container, and you can access it using your public IP address and the specified port (e.g., http://your-public-ip:5000).
 
+# Jenkins Freestyle Job for Docker Build and Deployment for Manik-Flask-Calculator
+
+This readme provides a step-by-step guide for setting up a Jenkins Freestyle job for Docker build and deployment for the Manik-Flask-Calculator project.
+
+## Prerequisites
+
+Ensure that you have the following installed on your system:
+- Jenkins
+- Docker
+
+## Job Configuration
+
+1. Open Jenkins and navigate to the dashboard.
+
+2. Click on "New Item" to create a new job and enter a name for the job.
+
+3. Select "Freestyle project" and click "OK".
+
+4. In the "Source Code Management" section, select "Git" and enter the URL of the GitHub repository for the Manik-Flask-Calculator project: https://github.com/manikcloud/manik-python-flask-calculator.git
+
+5. Set the branch to "main" in the "Branches to build" field.
+
+6. In the "Build" section, click "Add build step" and select "Execute shell".
+
+7. In the "Command" field, enter the following command to log in to Docker Hub:
+
+```
+docker login -u <your_dockerhub_username> -p <your_dockerhub_password>
+```
+
+- Replace `<your_dockerhub_username>` and `<your_dockerhub_password>` with your actual Docker Hub credentials.
+
+8. Add another "Execute shell" build step to build and deploy the Docker container:
+
+```
+sudo docker build -t manik-flask-calculator:$BUILD_ID .
+sudo docker rm flask-calculator -f
+sudo docker run -d -p 5000:5000 --name flask-calculator manik-flask-calculator:$BUILD_ID
+
+```
+# Smoke test
+
+```sleep 10
+curl http://localhost:5000/health
+```
+This command will build the Docker container, remove any existing container with the same name, run the new container, and perform a smoke test by checking the `/health` endpoint.
+
+9. Click "Save" to save the job configuration.
+
+10. Run the Jenkins job to trigger a build and deploy the Docker container.
+
+11. Verify that the Docker container is deployed and working correctly by checking the logs or accessing the application.
+
+This setup creates a simple CI/CD pipeline for the Manik-Flask-Calculator project that automates the build, testing, and deployment process using Jenkins and Docker Hub. Whenever new code is pushed to the GitHub repository, Jenkins automatically triggers a build and test cycle, and if everything passes, it builds and deploys a Docker container. The smoke test helps to ensure that the container is running correctly and the application is working as expected.
