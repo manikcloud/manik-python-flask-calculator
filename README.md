@@ -17,6 +17,13 @@ Manik Python Flask Calculator is a simple web application that allows users to p
 
 ### Steps
 
+0. Add the Ubuntu user to the Docker group by running the following command:
+
+```
+sudo usermod -aG docker ubuntu
+```
+- This will grant the Ubuntu user permission to run Docker commands without using sudo.
+
 1. Clone the repository:
 
 ```
@@ -39,6 +46,19 @@ manik-flask-calculator
 ```
 * Access the application in your browser at http://localhost:5000 (replace localhost with the appropriate IP address if you're running the Docker container on a remote server).
 
+## Most common error and resolution 
+
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+```
+sudo chmod 777 /var/run/docker.sock
+```
+
+Add the Ubuntu user to the Docker group by running the following command:
+
+```
+sudo usermod -aG docker ubuntu
+```
+This will grant the Ubuntu user permission to run Docker commands without using sudo.
 
 # More info manik-python-flask-calculator
 
