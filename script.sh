@@ -1,19 +1,19 @@
-#!/bin/bash
+# #!/bin/bash
 
-# Build the Docker image
-sudo docker build -t varunmanik/manik-flask-calculator:$BUILD_ID .
+# # Build the Docker image
+# sudo docker build -t varunmanik/manik-flask-calculator:$BUILD_ID .
 
-# Remove any existing containers
-sudo docker rm flask-calculator -f
+# # Remove any existing containers
+# sudo docker rm flask-calculator -f
 
-# # Log in to Docker Hub
-# sudo docker login -u varunmanik -p $DOCKER_HUB_PASSWORD
+# # # Log in to Docker Hub
+# # sudo docker login -u varunmanik -p $DOCKER_HUB_PASSWORD
 
-# # Push the Docker image to Docker Hub
-# sudo docker push varunmanik/manik-flask-calculator:$BUILD_ID
+# # # Push the Docker image to Docker Hub
+# # sudo docker push varunmanik/manik-flask-calculator:$BUILD_ID
 
-# Run the Docker container
-sudo docker run -d -p 5000:5000 --name flask-calculator varunmanik/manik-flask-calculator:$BUILD_ID
+# # Run the Docker container
+# sudo docker run -d -p 5000:5000 --name flask-calculator varunmanik/manik-flask-calculator:$BUILD_ID
 
 # Smoke test
 echo "# Smoke test"
