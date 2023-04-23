@@ -24,8 +24,8 @@ curl http://localhost:5000/health
 # Smoke test
 response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000/)
 if [ $response -eq 200 ]; then
-  echo "Smoke test passed!"
+  echo "..... ! Smoke test passed!"
 else
-  echo "Smoke test failed!"
+  echo "...... ! Smoke test failed!"
   exit 1
 fi
